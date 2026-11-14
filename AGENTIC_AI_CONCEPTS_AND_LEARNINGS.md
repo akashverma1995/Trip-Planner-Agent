@@ -1,6 +1,6 @@
 # 🧠 Agentic AI Engineering: Concepts, Architectural Patterns & Key Learnings
 
-> A complete handbook on what we learned building **TripMate AI** using **LangGraph**, **FastAPI**, **Groq**, **PostgreSQL**, **Tavily**, and **AviationStack** — and how to apply these concepts to future Agentic AI systems.
+> A complete handbook on what we learned building **TripPlanner AI** using **LangGraph**, **FastAPI**, **Groq**, **PostgreSQL**, **Tavily**, and **AviationStack** — and how to apply these concepts to future Agentic AI systems.
 
 ---
 
