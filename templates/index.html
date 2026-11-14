@@ -9,7 +9,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -36,7 +38,7 @@
                     <i class="fa-solid fa-paper-plane"></i>
                 </div>
                 <div class="brand-text">
-                    <span class="brand-title">TripMate <span class="accent-text">AI</span></span>
+                    <span class="brand-title">TripPlanner <span class="accent-text">AI</span></span>
                     <span class="brand-subtitle">Autonomous Travel Intelligence</span>
                 </div>
             </div>
@@ -65,7 +67,8 @@
             </h1>
 
             <p class="hero-subtitle">
-                Autonomous AI agents collaborate in parallel to scout live flights, discover premier stays, and engineer tailor-made day-by-day itineraries with complete budget breakdowns.
+                Autonomous AI agents collaborate in parallel to scout live flights, discover premier stays, and engineer
+                tailor-made day-by-day itineraries with complete budget breakdowns.
             </p>
 
             <!-- Feature Highlight Pills -->
@@ -103,11 +106,9 @@
             </div>
 
             <div class="input-area">
-                <textarea 
-                    id="userInput" 
+                <textarea id="userInput"
                     placeholder="e.g. Plan a 5-day luxury trip to Goa from Mumbai with beachside villas and water sports under ₹50,000..."
-                    rows="3"
-                ></textarea>
+                    rows="3"></textarea>
 
                 <button id="sendBtn" onclick="sendMessage()">
                     <span id="btnText">
@@ -137,19 +138,24 @@
                     <i class="fa-solid fa-compass"></i> Popular Ideas:
                 </div>
                 <div class="quick-prompts">
-                    <button onclick="setPrompt('Plan a 5 days beach getaway to Goa from Mumbai with beachside resorts, seafood cafes, and water sports.')">
+                    <button
+                        onclick="setPrompt('Plan a 5 days beach getaway to Goa from Mumbai with beachside resorts, seafood cafes, and water sports.')">
                         🏖️ Goa (5 Days from Mumbai)
                     </button>
-                    <button onclick="setPrompt('Plan a 7 days Kashmir trip from Delhi covering Srinagar, Gulmarg, and Pahalgam under ₹60,000.')">
+                    <button
+                        onclick="setPrompt('Plan a 7 days Kashmir trip from Delhi covering Srinagar, Gulmarg, and Pahalgam under ₹60,000.')">
                         🏔️ Kashmir (7 Days from Delhi)
                     </button>
-                    <button onclick="setPrompt('Plan a 5 days Dubai trip from Delhi with flights, desert safari, Burj Khalifa, and 4-star hotels.')">
+                    <button
+                        onclick="setPrompt('Plan a 5 days Dubai trip from Delhi with flights, desert safari, Burj Khalifa, and 4-star hotels.')">
                         🏙️ Dubai (5 Days from Delhi)
                     </button>
-                    <button onclick="setPrompt('Plan a 6 days Bali retreat from Bengaluru with pool villas, beach clubs, and temple tours.')">
+                    <button
+                        onclick="setPrompt('Plan a 6 days Bali retreat from Bengaluru with pool villas, beach clubs, and temple tours.')">
                         🌴 Bali (6 Days from Bengaluru)
                     </button>
-                    <button onclick="setPrompt('Plan a 4 days heritage tour of Jaipur & Udaipur from Delhi with royal havelis and dining.')">
+                    <button
+                        onclick="setPrompt('Plan a 4 days heritage tour of Jaipur & Udaipur from Delhi with royal havelis and dining.')">
                         🏰 Rajasthan (4 Days from Delhi)
                     </button>
                 </div>
@@ -166,6 +172,10 @@
                 </div>
 
                 <div class="result-actions">
+                    <button class="new-plan-btn" onclick="startNewPlan()">
+                        <i class="fa-solid fa-plus"></i>
+                        <span class="btn-label">New Plan</span>
+                    </button>
                     <button class="copy-btn" onclick="copyResult()">
                         <i class="fa-regular fa-copy"></i>
                         <span class="btn-label">Copy Plan</span>
@@ -196,7 +206,9 @@
     <!-- Global Footer -->
     <footer class="app-footer">
         <div class="footer-container">
-            <p>Built with enterprise <strong>LangGraph</strong> parallel orchestration, <strong>FastAPI</strong>, <strong>Groq</strong>, <strong>Tavily</strong>, and <strong>AviationStack</strong>.</p>
+            <p>Built with enterprise <strong>LangGraph</strong> parallel orchestration, <strong>FastAPI</strong>,
+                <strong>Groq</strong>, <strong>Tavily</strong>, and <strong>AviationStack</strong>.
+            </p>
         </div>
     </footer>
 

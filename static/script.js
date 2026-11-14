@@ -232,6 +232,17 @@ function downloadPDF() {
         });
 }
 
+function startNewPlan() {
+    currentThreadId = null;
+    localStorage.removeItem("travel_thread_id");
+    const input = document.getElementById("userInput");
+    input.value = "";
+    document.getElementById("resultSection").classList.add("hidden");
+    hideError();
+    input.focus();
+    input.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
 document.addEventListener("keydown", function (event) {
     if (event.ctrlKey && event.key === "Enter") {
         sendMessage();

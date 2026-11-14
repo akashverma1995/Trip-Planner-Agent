@@ -22,6 +22,7 @@ import psycopg
 from psycopg.rows import dict_row
 
 from langgraph.graph import StateGraph, START, END
+from langgraph.graph.message import add_messages
 from langgraph.checkpoint.postgres import PostgresSaver
 from langchain_core.messages import (
     AnyMessage,
@@ -71,18 +72,25 @@ llm = ChatGroq(
 # 2. State Definition (Typed Contracts & Additive Reducers)
 # ==============================================================================
 
+def add_ints(a: Optional[int], b: Optional[int]) -> int:
+    """Safe integer reducer for parallel graph channels."""
+    val_a = a if isinstance(a, int) else 0
+    val_b = b if isinstance(b, int) else 0
+    return val_a + val_b
+
+
 class TravelState(TypedDict):
     """
     Central state container for the LangGraph travel pipeline.
-    Uses operator.add on messages and llm_calls to prevent race conditions during parallel execution.
+    Uses add_messages on messages and add_ints on llm_calls to prevent race conditions during parallel execution.
     """
-    messages: Annotated[list[AnyMessage], operator.add]
+    messages: Annotated[list[AnyMessage], add_messages]
     user_query: str
     flight_results: str
     hotel_results: str
     itinerary: str
     final_response: str
-    llm_calls: Annotated[int, operator.add]
+    llm_calls: Annotated[int, add_ints]
 
 
 # ==============================================================================
@@ -359,7 +367,18 @@ def run_travel_agent(user_input: str, thread_id: Optional[str] = None) -> Dict[s
         "user_query": user_input,
     }
 
-    result = travel_graph.invoke(initial_payload, config=config)
+    try:
+        result = travel_graph.invoke(initial_payload, config=config)
+    except Exception as exc:
+        # Self-healing: if an old thread checkpoint has corrupted channel state, auto-recover with a clean thread
+        err_msg = str(exc).lower()
+        if thread_id and any(kw in err_msg for kw in ["unsupported operand", "msgpack", "checkpoint", "typeerror", "ext_hook", "cannot unpack"]):
+            print(f"[Self-Healing] Corrupt/incompatible checkpoint detected for thread '{active_thread_id}': {exc}. Resetting to fresh thread.")
+            active_thread_id = f"user_{uuid.uuid4().hex}"
+            config["configurable"]["thread_id"] = active_thread_id
+            result = travel_graph.invoke(initial_payload, config=config)
+        else:
+            raise
 
     # Extract final assistant answer
     final_answer = ""
