@@ -17,7 +17,7 @@
 
 <br />
 
-[Features](#-key-features) • [Architecture](#-multi-agent-architecture) • [Getting Started](#-getting-started) • [Environment Setup](#-environment-variables) • [Tech Stack](#-tech-stack)
+[Features](#-key-features) • [Architecture](#-multi-agent-architecture) • [Getting Started](#-getting-started) • [Engineering Learnings](AGENTIC_AI_CONCEPTS_AND_LEARNINGS.md) • [Tech Stack](#-tech-stack)
 
 </div>
 
